@@ -1,7 +1,7 @@
 class Database:
     def __init__(self,Name):
         self.Name = Name
-        self.Tables = []     # stores the list of tables in the database
+        self.Tables = {}     # Holds objects of the class Table in the database
 
     
     class Table:
@@ -9,11 +9,24 @@ class Database:
             self.tableName=tableName
             self.columns = columns
             
+            self.Rows = {}  #Holds objects of class Row in the table
+
+
+        class Row:
+            def __init__(self,record):
+                for elementKey in record:
+                    setattr(self, elementKey, record[elementKey])
+
+        def AddRecord(self,RowId,record):
+            self.Rows[RowId]= self.Row(record)
+
+
+
         
-        def pushTableToSQLite():
-            pass
+
 
 
     def CreateTable(self,tableName,columns):
-        self.Tables.append(self.Table(tableName, columns))
+        self.Tables[tableName]=(self.Table(tableName, columns))
         
+    
