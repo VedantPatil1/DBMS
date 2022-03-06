@@ -25,7 +25,11 @@ class TestTable(unittest.TestCase):
     def tearDown(self):
         pass
 
-    
+    def test_CreateTableInSqliteCommand(self):
+        command = self.tableObject.CreateTableInSqliteCommand()
+        desiredCommand = "CREATE TABLE IF NOT EXISTS testTable1 (first_name TEXT, last_name TEXT, Phone_number INTEGER, email TEXT, )"
+        self.assertEqual(command,desiredCommand) 
+           
     def test_AddRecord(self):
         self.tableObject.AddRecord(self.RowId,self.record)
         attributes=[]
@@ -34,7 +38,9 @@ class TestTable(unittest.TestCase):
                 if not inspect.ismethod(i[1]): 
                     attributes.append(i)
         attributes.sort()
-        desired_attributes = [('email', 'vedantpatil.w.1@gmail.com'), ('first_name', 'Vedant'), ('last_name', 'Patil'), ('Phone_number', 9011752914)]
-        desired_attributes.sort()
-        self.assertListEqual(attributes,desired_attributes)
+        desiredattributes = [('email', 'vedantpatil.w.1@gmail.com'), ('first_name', 'Vedant'), ('last_name', 'Patil'), ('Phone_number', 9011752914)]
+        desiredattributes.sort()
+        self.assertListEqual(attributes,desiredattributes)
+        
+    
         

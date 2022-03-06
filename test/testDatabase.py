@@ -8,6 +8,7 @@ from SqliteManager import Database
 class TestDatabase(unittest.TestCase):
     def setUp(self):
         self.testDatabase = Database('test.db')
+        
         self.columns = {"first_name":"TEXT",
                         "last_name":"TEXT",
                         "Phone_number":"INTEGER",
@@ -17,7 +18,7 @@ class TestDatabase(unittest.TestCase):
 
     def tearDown(self):
         pass
-
+    
     def test_CreateTableObject(self):
         self.testDatabase.CreateTable(self.tableName,self.columns)
         tableObject = self.testDatabase.Tables[self.tableName]

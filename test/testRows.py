@@ -20,17 +20,3 @@ class TestRow(unittest.TestCase):
 
     def tearDown(self):
         pass
-
-    def test_CreateRowObject(self):
-        self.tableObject.CreateRow(self.RowId)
-        attributes=[]
-        for i in inspect.getmembers(self.tableObject.Rows[self.RowId]):  
-            if not i[0].startswith('_'):
-                if not inspect.ismethod(i[1]): 
-                    attributes.append(i)
-        attributes.sort()
-        desired_attributes = [('email', 'TEXT'), ('first_name', 'TEXT'), ('last_name', 'TEXT'), ('Phone_number', 'INTEGER'),('keys',['first_name', 'last_name', 'Phone_number', 'email'])]
-        desired_attributes.sort()
-        self.assertListEqual(attributes,desired_attributes)
-    
-    
