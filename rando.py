@@ -6,3 +6,4 @@ columns = {"first_name":"TEXT",
 for i in columns:
     print(columns[i])
     
+"hi this is vedant"
